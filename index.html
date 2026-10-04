@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+
+<!--   Academic Integrity / AI Assistance:
+  This code was developed with assistance from Claude AI.
+  The code was reviewed, adapted, and tested for this assignment. -->
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlueLib Catalogue | BlueCrest College Library</title>
+    <link rel="icon" href="assets/logo.png">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Header: logo, site name and menu -->
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="brand">
+                <img src="assets/logo.png" alt="BlueCrest logo" class="brand-logo">
+                <div>
+                    <h1 class="brand-name">BlueLib Catalogue</h1>
+                    <p class="brand-sub">BlueCrest College Library</p>
+                </div>
+            </div>
+
+            <nav class="main-nav">
+                <a href="#catalogue" class="nav-link is-active">Catalogue</a>
+                <a href="#add-book" class="nav-link">Add Book</a>
+                <span class="status-pill"><span class="status-dot"></span>Library Circulation Online</span>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- Catalogue: title, numbers, search, filter and the book cards -->
+        <section id="catalogue">
+            <div class="page-head">
+                <div>
+                    <h2 class="page-title">Curriculum &amp; Compendium Catalogue</h2>
+                    <p class="page-lead">Explore, search, filter, and borrow textbooks and academic monographs.</p>
+                </div>
+                <div class="stats">
+                    <div class="stat">
+                        <span class="stat-number" id="stat-titles">0</span>
+                        <span class="stat-label">Total Titles</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="stat-copies">0</span>
+                        <span class="stat-label">Available Copies</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="toolbar">
+                <div class="toolbar-row">
+                    <label for="search-input" class="visually-hidden">Search books by title</label>
+                    <input type="search" id="search-input" class="search-input" placeholder="Search books by title...">
+
+                    <div class="filter-group">
+                        <label for="category-filter" class="filter-label">Filter Category:</label>
+                        <select id="category-filter" class="select-input">
+              <option value="all">All Categories</option>
+            </select>
+                    </div>
+                </div>
+                <div class="toolbar-meta">
+                    <span id="result-count">Showing 0 of 0 books</span>
+                    <span id="loan-period">Standard Loan Period: 14 Days</span>
+                </div>
+            </div>
+
+            <h3 class="section-title">Available Volumes</h3>
+
+            <!-- The book cards are added here by app.js -->
+            <div id="book-grid" class="book-grid"></div>
+            <p id="empty-state" class="empty-state" hidden>No books match your search. Try a different title or category.</p>
+        </section>
+
+        <!-- Add Book form -->
+        <section id="add-book" class="form-card">
+            <h2 class="form-title">Add Book to Catalogue</h2>
+            <p class="form-lead">Enter the details below to add a new textbook or academic volume to the library system.</p>
+
+            <form id="add-book-form" novalidate>
+                <div class="form-grid">
+
+                    <div class="field">
+                        <label for="book-title">Book Title <span class="req">*</span></label>
+                        <input type="text" id="book-title" placeholder="e.g. Operating Systems: Three Easy Pieces">
+                    </div>
+
+                    <div class="field">
+                        <label for="book-author">Author <span class="req">*</span></label>
+                        <input type="text" id="book-author" placeholder="e.g. Remzi H. Arpaci-Dusseau">
+                    </div>
+
+                    <div class="field">
+                        <label for="book-category">Category <span class="req">*</span></label>
+                        <select id="book-category">
+              <option value="">Select a category...</option>
+            </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="book-copies">Copies Available <span class="req">*</span></label>
+                        <input type="number" id="book-copies" min="0" step="1" placeholder="e.g. 5">
+                    </div>
+
+                    <div class="field field-wide">
+                        <label for="book-cover">Cover Image <span class="optional">(optional, max 20 MB)</span></label>
+                        <input type="file" id="book-cover" accept="image/*">
+                        <div id="cover-preview" class="cover-preview" hidden></div>
+                    </div>
+
+                </div>
+
+                <!-- Error or success message (filled in by app.js) -->
+                <p id="form-message" class="form-message" hidden></p>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-dark">+ Add Book</button>
+                    <button type="reset" class="btn btn-light">Reset Form</button>
+                </div>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- Footer: name and student ID -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>Name: <strong>Botchwey Michael</strong> | Student ID: <strong>400622039066</strong></p>
+            <p>BlueCrest College Library &copy; 2025. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Notification pop-up (filled in by app.js) -->
+    <div id="toast" class="toast" hidden></div>
+
+    <!-- data.js must load first, because app.js uses its data -->
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>
